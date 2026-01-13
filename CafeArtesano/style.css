@@ -57,19 +57,19 @@
     background: #fefae0;
 }
 
-.card {
-    text-align: center;
+.grid-menu   {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    width:30%;
 }
 
-.menu   {
-    display: flex;
-    justify-content: space-around;
-    padding: 50px;
-    background: #b77545;
+.card-menu {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    background: white;
 }
 
 @media (max-width: 768px) {
