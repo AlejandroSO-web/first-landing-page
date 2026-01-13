@@ -65,6 +65,13 @@
     width:30%;
 }
 
+.menu   {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    background: #b77545;
+}
+
 @media (max-width: 768px) {
     .features{
         flex-direction: column;
