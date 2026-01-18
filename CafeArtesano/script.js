@@ -21,11 +21,20 @@ misCafes.forEach(cafe => {
                                             contenedor.innerHTML += estructuraCard;
 });
 
+/*Variable que ira cambiando*/
+let total = 0;
+
 /*Funcion para cuando se haga click en el menu*/
 
 function seleccionarCafe(nombre){
-    alert("Has elegido un " + nombre);
-}
+    const cafeEncontrado = misCafes.find(cafe => cafe.nombre === nombre);/*Buscamos el cafe para saber su precio*/
+
+    if (cafeEncontrado){
+        total += cafeEncontrado.precio; /*Sumar el total*/
+        actualizarPantalla();
+        verificarBotonVaciado();
+    }
+    }
 
 /*Boton Pedir Ahora*/
 const botonPedido = document.querySelector('.btn');
@@ -47,3 +56,23 @@ botonPedido.addEventListener('click',function(){
     botonPedido.disabled = true;
     botonPedido.innerText ="En camino... ";
 });
+/*Funcion para resetear el contador*/
+function vaciarCarrito(){
+    total = 0;
+    actualizarPantalla();
+    verificarBotonVaciado();
+}
+
+function verificarBotonVaciado(){
+    const boton = document.getElementById('btn-vaciar');
+
+    if (total > 0 ){
+        boton.style.display = "block"; /*Mostramos el boton*/
+    }else {
+        boton.style.display ="none"; /*Ocultamos el boton*/
+    }
+}
+
+function actualizarPantalla(){
+    document.getElementById('precio-total').innerText = total.toFixed(2);
+}
