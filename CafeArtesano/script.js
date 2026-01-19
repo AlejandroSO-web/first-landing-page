@@ -1,3 +1,11 @@
+/*leemos lo que hay en Local Storage, si lo hay...*/
+let totalGuardado = localStorage.getItem('totalCompra');
+/*Si existe, lo usamos y sino lo dejamos en 0*/
+let total = totalGuardado ? parseFloat(totalGuardado) : 0;
+/*Pintamos el total recuperado en la pantalla*/
+document.getElementById('precio-total').innerText = total.toFixed(2);
+verificarBotonVaciado();
+
 /*Base de datos local*/
 const misCafes =[
     {nombre: "Expreso", precio: 1.50, icono: "☕"},
@@ -21,20 +29,65 @@ misCafes.forEach(cafe => {
                                             contenedor.innerHTML += estructuraCard;
 });
 
-/*Variable que ira cambiando*/
-let total = 0;
+/*Empezamos con una lista vacia o recuperamos lista guardada*/
+let carritoGuardado = localStorage.getItem('miCarrito');
+let carrito = carritoGuardado ? JSON.parse(carritoGuardado) : [];
 
-/*Funcion para cuando se haga click en el menu*/
-
+/*Funcion para añadir el producto completo al carrito*/
 function seleccionarCafe(nombre){
     const cafeEncontrado = misCafes.find(cafe => cafe.nombre === nombre);/*Buscamos el cafe para saber su precio*/
 
     if (cafeEncontrado){
-        total += cafeEncontrado.precio; /*Sumar el total*/
-        actualizarPantalla();
-        verificarBotonVaciado();
+        /*Añadimos el objeto entero a nuestra lista*/
+        carrito.push(cafeEncontrado);
+
+        /*Guardamos la lista actualizada (convertida a texto)*/
+        localStorage.setItem('miCarrito', JSON.stringify(carrito));
+
+        actualizarInterfaz();
     }
     }
+
+/*Crear la función para pintar la lista en JS*/
+function actualizarInterfaz(){
+    const listaUI = document.getElementById('lista-productos');
+    const totalUI = document.getElementById('precio-total');
+
+    /*Limpiamos la lista ante de volver a pintarla*/ 
+    listaUI.innerHTML= "";
+    let sumaTotal = 0;
+
+    /*Recorremos el carrito para crear los <li>*/
+    if (carrito.length === 0){
+        listaUI.innerHTML = "<p style='color: #999; text-align:center;'>Tu carrito está vacío. ¡Pide un café☕!</p>";
+    }else {
+    carrito.forEach((item, index) => {
+        sumaTotal+= item.precio;
+        listaUI.innerHTML += `
+                            <li>
+                                ${item.icono} ${item.nombre} - $${item.precio}
+                                <button onclick="eliminarDelCarrito(${index})">❌</button>
+                            </li>
+                            `;
+});
+}
+    totalUI.innerText = sumaTotal.toFixed(2);
+    verificarBotonVaciado();
+}
+/*Llamamos a esta funcion al cargar la página para que se vea lo guardado*/
+actualizarInterfaz();
+
+function eliminarDelCarrito(index){
+    /*Quitamos el elemento del array usando su posicion.*/
+    carrito.splice(index,1);
+    /*Guardamos la lista actualizada en el LocalStorage*/
+    localStorage.setItem('miCarrito', JSON.stringify(carrito));
+    /*Volvemos a pintar la interfaz para que el cambio se vea*/
+    actualizarInterfaz();
+}
+
+
+
 
 /*Boton Pedir Ahora*/
 const botonPedido = document.querySelector('.btn');
@@ -56,20 +109,21 @@ botonPedido.addEventListener('click',function(){
     botonPedido.disabled = true;
     botonPedido.innerText ="En camino... ";
 });
-/*Funcion para resetear el contador*/
+
 function vaciarCarrito(){
-    total = 0;
-    actualizarPantalla();
-    verificarBotonVaciado();
+    /*Vaciamos el array*/
+    carrito = [];
+    localStorage.removeItem('miCarrito'); /*Borramos el dato guardado*/
+    actualizarInterfaz();/*Refrescamos pantalla*/
 }
 
 function verificarBotonVaciado(){
     const boton = document.getElementById('btn-vaciar');
 
     if (total > 0 ){
-        boton.style.display = "block"; /*Mostramos el boton*/
+        boton.style.display = "block"; /*Mostramos*/
     }else {
-        boton.style.display ="none"; /*Ocultamos el boton*/
+        boton.style.display ="none"; /*Ocultamos*/
     }
 }
 
