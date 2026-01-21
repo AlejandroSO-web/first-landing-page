@@ -43,7 +43,7 @@ function seleccionarCafe(nombre){
 
         /*Guardamos la lista actualizada (convertida a texto)*/
         localStorage.setItem('miCarrito', JSON.stringify(carrito));
-
+        mostrarNotificacion(cafeEncontrado.nombre);
         actualizarInterfaz();
     }
     }
@@ -150,4 +150,13 @@ function enviarPedido(){
 
     /*Abrimos la ventana de WhatsApp*/
     window.open(`https://wa.me/${telefono}?text=${mensajeEnviado}`,'_blank');
+}
+
+function mostrarNotificacion(nombre){
+    const aviso = document.createElement('div');
+    aviso.classList.add('notificacion');
+    aviso.innerText= `✅${nombre} añadido al carrito`;
+    document.body.appendChild(aviso);
+
+    setTimeout(() => {aviso.remove();}, 3000);
 }
