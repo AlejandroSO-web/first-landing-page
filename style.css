@@ -1,0 +1,177 @@
+/*Quitar margenes*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/*Navegador*/
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    background: #2c1e1a;
+    color:white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-links a{
+    color: white;
+    text-decoration: none;
+}
+
+/*SECCION CARTAS*/
+.hero {
+    height: 60vh;
+    background-image: url('./cafe.jpg');
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px 25px;
+    background: #d4a373;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/*Seccion de caracteristicas */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px;
+    background: #fefae0;
+}
+
+.grid-menu   {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card-menu {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    background: white;
+}
+
+/*Contenedor principal del carrito*/
+.resumen-carrito {
+    background: #fdfaf7;
+    border: 2px dashed #d4a373;
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+/*Estilo de la lista de productos*/
+#lista-productos {
+    list-style: none;
+    padding: 0;
+}
+
+#lista-productos li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 1.1rem;
+}
+
+/* Boton eliminar */
+#lista-productos button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width:25px;
+    height: 25px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: transform 0.2s;
+}
+
+#lista-productos button:hover{
+    transform: scale(1.2);
+    background: #ee5253;
+}
+/*Total resaltado*/
+.total-seccion {
+    text-align: right;
+    font-size: 1.5rem;
+    color: #603808;
+    margin-top: 15px;
+}
+
+.btn-whatsapp {
+    background-color: #25d366;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.btn-whatsapp:hover{
+    background-color: #128c7e;
+}
+
+.notificacion {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #603808;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    animation: aparecer 0.5s, desaparecer 0.5s 2.5s forwards;
+    z-index: 1000;
+}
+
+@keyframes aparecer {from {opacity: 0; transform: translateY(20px);} to {opacity:1; transform: translateY(0); }}
+
+@keyframes desaparecer { from {opacity: 1;}to {opacity: 0;}}
+
+
+
+@media (max-width: 768px) {
+    .features{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cafe Artesano</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">Cafe Artesano</div>
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Menú</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <h1>Despierta tu codigo con el mejor aroma</h1>
+        <p>Granos seleccionados para largas noches de debugging</p>
+        <button class="btn">Pedir ahora</button>
+    </header>
+    <section class="menu-seccion">
+        <h2>Nuestro Menú</h2>
+        <div id="contenedor-menu" class="grid-menu">
+        </div>
+        <div class="carrito">
+            <h3>Total de tu pedido: <span id="precio-total">0.00</span>€</h3>
+            <button id="btn-vaciar" onclick="vaciarCarrito()" class="btn-borrar" style="display: none;">Vaciar carrito</button>
+        </div>
+        <div class="resumen-carrito">
+            <h3>Tus productos:</h3>
+            <ul id="lista-productos"></ul>
+        </div>
+        <button onclick="enviarPedido()" id="btn-confirmar" class="btn-whatsapp">Confirmar via WhatsApp📱</button>  
+    </section>
+
+        
+    <script src="script.js"></script>
+</body>
+</html>
