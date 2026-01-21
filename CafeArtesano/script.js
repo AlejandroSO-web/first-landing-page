@@ -65,7 +65,7 @@ function actualizarInterfaz(){
         sumaTotal+= item.precio;
         listaUI.innerHTML += `
                             <li>
-                                ${item.icono} ${item.nombre} - $${item.precio}
+                                ${item.icono} ${item.nombre} - ${item.precio}€
                                 <button onclick="eliminarDelCarrito(${index})">❌</button>
                             </li>
                             `;
@@ -129,4 +129,25 @@ function verificarBotonVaciado(){
 
 function actualizarPantalla(){
     document.getElementById('precio-total').innerText = total.toFixed(2);
+}
+
+function enviarPedido(){
+    if(carrito.length === 0){
+        alert("El carrito está vacío");
+        return;
+    }
+    const telefono = "99999999"; /*Número de whatsapp que era dirigido el pedido*/
+    let mensaje = "¡Hola! Quisiera hacer el siguiente pedido:\n\n";
+
+    /*Recorremos el carrito para añadir cada producto al mensaje*/
+    carrito.forEach((item) => {
+        mensaje += `- ${item.nombre} (${item.precio.toFixed(2)})€\n`;
+    });
+    
+    mensaje +=`\nTotal a pagar: ${document.getElementById('precio-total').innerText}€`;
+    /*Codificamos el mensaje para que sea apto*/
+    const mensajeEnviado = encodeURIComponent(mensaje);
+
+    /*Abrimos la ventana de WhatsApp*/
+    window.open(`https://wa.me/${telefono}?text=${mensajeEnviado}`,'_blank');
 }
