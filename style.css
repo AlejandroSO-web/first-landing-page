@@ -1,3 +1,13 @@
+:root{
+    --color-principal: #603808; /*Marrón café*/
+    --color-secundario: #d4a373; /*Crema*/
+    --color-fondo: #fdfaf7; /*Papel claro*/
+    --color-acento: #25d366; /*Verde*/
+    --color-texto: #333333;
+    --fuente-principal:'Poppins', sans-serif;
+    --borde-redondeado: 20px;
+}
+
 /*Quitar margenes*/
 * {
     margin: 0;
@@ -6,7 +16,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/*Navegador*/
+/*Navegador
 .navbar{
     display: flex;
     justify-content: space-between;
@@ -26,7 +36,7 @@
     color: white;
     text-decoration: none;
 }
-
+*/
 /*SECCION CARTAS*/
 .hero {
     height: 60vh;
@@ -36,14 +46,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    color: var(--color-fondo);
     text-align: center;
 }
 
 .btn {
     margin-top: 20px;
     padding: 10px 25px;
-    background: #d4a373;
+    background: var(--color-secundario);
     border: none;
     cursor: pointer;
     font-weight: bold;
@@ -54,7 +64,7 @@
     display: flex;
     justify-content: space-around;
     padding: 50px;
-    background: #fefae0;
+    background: var(--color-fondo);
 }
 
 .grid-menu   {
@@ -68,16 +78,16 @@
     border: 1px solid #ddd;
     padding: 15px;
     text-align: center;
-    border-radius: 10px;
-    background: white;
+    border-radius: var(--borde-redondeado);
+    background: var(--color-fondo);
 }
 
 /*Contenedor principal del carrito*/
 .resumen-carrito {
     background: #fdfaf7;
-    border: 2px dashed #d4a373;
+    border: 2px dashed var(--color-secundario);
     padding: 20px;
-    border-radius: 15px;
+    border-radius: var(--borde-redondeado);
     max-width: 400px;
     margin: 20px auto;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -119,12 +129,12 @@
 .total-seccion {
     text-align: right;
     font-size: 1.5rem;
-    color: #603808;
+    color: var(--color-principal);
     margin-top: 15px;
 }
 
 .btn-whatsapp {
-    background-color: #25d366;
+    background-color:var(--color-acento);
     color: white;
     padding: 15px;
     border: none;
@@ -144,12 +154,29 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #603808;
+    background: var(--color-principal);
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
     animation: aparecer 0.5s, desaparecer 0.5s 2.5s forwards;
     z-index: 1000;
+}
+
+/*Estilo del botón hamburguesa*/
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    background: none;
+    border: none;
+    gap:5px;
+}
+
+.menu-toggle span {
+    width: 30px;
+    height: 3px;
+    background-color: var(--color-principal);
+    transition: 0.3s;
 }
 
 @keyframes aparecer {from {opacity: 0; transform: translateY(20px);} to {opacity:1; transform: translateY(0); }}
@@ -159,6 +186,26 @@
 
 
 @media (max-width: 768px) {
+    .menu-toggle{
+        display: flex;
+    }
+
+    .nav-links{
+        display: none;
+        flex-direction: column;
+        position:absolute;
+        top: 60px;
+        right: 0;
+        background-color: var(--color-fondo);
+        width: 100%;
+        text-align: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-links.active{
+        display: flex;
+    }
     .features{
         flex-direction: column;
         align-items: center;
@@ -175,3 +222,17 @@
     }
 }
 
+@media (max-width: 600px){
+    .grid-menu {
+        grid-template-columns: 1fr;
+        gap:10px;
+    }
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .resumen-carrito {
+        width: 90%;
+        position: relative;
+    }
+}
