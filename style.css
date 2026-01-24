@@ -4,8 +4,17 @@
     --color-fondo: #fdfaf7; /*Papel claro*/
     --color-acento: #25d366; /*Verde*/
     --color-texto: #333333;
+    --color-tarjeta: #ffffff;
     --fuente-principal:'Poppins', sans-serif;
     --borde-redondeado: 20px;
+}
+
+/*Modo oscuro*/
+body.dark-mode {
+    --color-principal: #d4a373; /*Marrón clarito*/
+    --color-fondo: #121212;/*Negro*/
+    --color-texto: #e0e0e0;/*Blanco*/
+    --color-tarjeta: #1e1e1e;/*Negro*/
 }
 
 /*Quitar margenes*/
