@@ -167,3 +167,22 @@ const navLinks = document.getElementById('nav-links');
 menuBtn.addEventListener('click', () =>{
     navLinks.classList.toggle('active');
 });
+
+const btnOscuro = document.getElementById('dark-mode-toggle');
+
+btnOscuro.addEventListener('click', () => {
+    /*Añade o quita modo oscuro al body*/
+    document.body.classList.toggle('dark-mode');
+    /*Guardar preferencia del usuario*/
+    if (document.body.classList.contains('dark-mode')){
+        localStorage.setItem('tema','oscuro');
+    }else {
+        localStorage.setItem('tema', 'claro');
+    }
+
+});
+
+/*Comprobar si ya le gustaba el modo oscuro*/
+if (localStorage.getItem('tema')=== 'oscuro'){
+    document.body.classList.add('dark-mode');
+}
