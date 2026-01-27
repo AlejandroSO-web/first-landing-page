@@ -6,16 +6,36 @@ let total = totalGuardado ? parseFloat(totalGuardado) : 0;
 document.getElementById('precio-total').innerText = total.toFixed(2);
 verificarBotonVaciado();
 
-/*Base de datos local*/
-const misCafes =[
-    {nombre: "Expreso", precio: 1.50, icono: "☕"},
-    {nombre: "Latte", precio: 2.50, icono:"🥛"},
-    {nombre: "Capuccino", precio: 3.00, icono:"🍫"},
-    {nombre: "Mocaccino", precio: 3.50, icono:"🧋"}
-];
+let misCafes = [];
 
-const contenedor = document.getElementById('contenedor-menu');
+async function cargarProductos() {
+    try{
+        const respuesta = await fetch('productos.json');
+        misCafes = await respuesta.json();
+        pintarMenu();
 
+    }catch(error) {
+        console.error("¡Oops! No pudimos cargar los productos:", error);
+    }
+}
+cargarProductos();
+
+function pintarMenu() {
+    const contenedor = document.getElementById('contenedor-menu');
+
+    contenedor.innerHTML="";
+
+    misCafes.forEach(cafe => {
+        contenedor.innerHTML += `
+            <div class="card-menu">
+                <span>${cafe.icono}</span>
+                <h3>${cafe.nombre}</h3>
+                <p>${cafe.precio.toFixed(2)}€</span>
+                <button onclick="seleccionarCafe('${cafe.nombre}')">Agregar</button>
+                </div>
+        `;
+    });
+}
 /*Bucle para recorrer la lista de cafes*/
 
 misCafes.forEach(cafe => {
