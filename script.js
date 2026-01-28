@@ -28,9 +28,11 @@
         misCafes.forEach(cafe => {
             contenedor.innerHTML += `
                 <div class="card-menu">
-                    <span>${cafe.icono}</span>
+                    <div class="card-img-container">
+                    <img src="${cafe.imagen}" alt="${cafe.nombre}" class="card-img"</img>
+                    </div>
                     <h3>${cafe.nombre}</h3>
-                    <p>${cafe.precio.toFixed(2)}€</span>
+                    <p>${cafe.precio.toFixed(2)}€</p>
                     <button onclick="seleccionarCafe('${cafe.nombre}')">Agregar</button>
                     </div>
             `;
