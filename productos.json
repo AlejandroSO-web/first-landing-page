@@ -1,6 +1,6 @@
 [
-    {"id": 1, "nombre": "Expreso", "precio":1.50, "icono": "☕"},
-    { "id": 2, "nombre": "Latte", "precio":2.50, "icono": "🥛"},
-    { "id": 3, "nombre": "Capuccino", "precio":3.00, "icono": "🍫"},
-    {"id": 4, "nombre": "Mocaccino", "precio":3.50, "icono": "🍯"}
+    {"id": 1, "nombre": "Expreso", "precio":1.50, "imagen": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?w=500"},
+    { "id": 2, "nombre": "Latte", "precio":2.50,"imagen": "https://images.unsplash.com/photo-1669162364316-a74b2d661d1e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+    { "id": 3, "nombre": "Capuccino", "precio":3.00,"imagen": "https://images.unsplash.com/photo-1710173472469-9d28e977914c?q=80&w=1216&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"},
+    {"id": 4, "nombre": "Mocaccino", "precio":3.50, "imagen": "https://plus.unsplash.com/premium_photo-1675435644687-562e8042b9db?q=80&w=1049&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"}
 ]
