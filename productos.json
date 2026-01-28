@@ -1,0 +1,6 @@
+[
+    {"id": 1, "nombre": "Expreso", "precio":1.50, "icono": "☕"},
+    { "id": 2, "nombre": "Latte", "precio":2.50, "icono": "🥛"},
+    { "id": 3, "nombre": "Capuccino", "precio":3.00, "icono": "🍫"},
+    {"id": 4, "nombre": "Mocaccino", "precio":3.50, "icono": "🍯"}
+]
