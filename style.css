@@ -68,6 +68,24 @@ body.dark-mode {
     font-weight: bold;
 }
 
+.card-img-container {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.card-menu:hover .card-img {
+    transform: scale(1.1);/*Zoom al pasar el ratón*/
+}
+
 /*Seccion de caracteristicas */
 .features {
     display: flex;
