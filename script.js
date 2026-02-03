@@ -20,12 +20,16 @@
     }
     cargarProductos();
 
-    function pintarMenu() {
+    function pintarMenu(listaAPintar = misCafes) {
         const contenedor = document.getElementById('contenedor-menu');
 
         contenedor.innerHTML="";
 
-        misCafes.forEach(cafe => {
+        if (listaAPintar.length === 0){
+            contenedor.innerHTML = "<p>No encontramos ese café...</p>";
+            return;
+        }
+        listaAPintar.forEach(cafe => {
             contenedor.innerHTML += `
                 <div class="card-menu">
                     <div class="card-img-container">
@@ -49,6 +53,20 @@
                                                 <button class="btn-seleccionar" onclick="seleccionarCafe('${cafe.nombre}')">Seleccionar</button>
                                                 </div>`;
                                                 contenedor.innerHTML += estructuraCard;
+    });
+
+    const inputBuscador = document.getElementById('buscador');
+
+    inputBuscador.addEventListener('input', (e) => {
+        const textoUsuario = e.target.value.toLowerCase(); /*Mensaje escrito por el usuario en el buscador*/
+
+        /*Filtramos cafes lo cuales coincidan con lo escrito por el usuario*/
+        const cafesFiltrados = misCafes.filter(cafe => 
+            cafe.nombre.toLowerCase().includes(textoUsuario)
+        );
+
+        /*Llamamos a pintarMenu pasando la lista filtrada*/
+        pintarMenu(cafesFiltrados);
     });
 
     /*Empezamos con una lista vacia o recuperamos lista guardada*/
