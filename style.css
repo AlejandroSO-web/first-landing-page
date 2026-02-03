@@ -109,6 +109,30 @@ body.dark-mode {
     background: var(--color-fondo);
 }
 
+/*estilo para el buscador */
+
+.buscador-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+#buscador {
+    padding: 12px 20px;
+    width: 80%;
+    max-width: 400px;
+    border: 2px solid var(--color-secundario);
+    border-radius: 25px;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-family: var(--fuente-principal);
+    outline: none;
+}
+
+#buscador:focus {
+    border-color: var(--color-principal);
+    box-shadow: 0 0 8px rgba(96,56,8,0.2);
+}
+
 /*Contenedor principal del carrito*/
 .resumen-carrito {
     background: #fdfaf7;
